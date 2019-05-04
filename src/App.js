@@ -26,18 +26,9 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-          {movies.map(movie => {
-            return <Movie title={movie.title} poster={movie.poster} />
+          {movies.map((movie, index) => {
+            return <Movie title={movie.title} poster={movie.poster} key={index} />
           })}
-
-          
-          {/* 위의 map 과 동일한 소스? 
-          {[
-            <Movie title={movies[0].title} poster={movies[0].poster} />
-            <Movie title={movies[1].title} poster={movies[1].poster} />
-            <Movie title={movies[2].title} poster={movies[2].poster} />
-            <Movie title={movies[3].title} poster={movies[3].poster} />
-          ]} */}
       </div>
     );
   }
