@@ -34,19 +34,25 @@ class App extends Component {
   // Update componentWillReceiveProps() -> shouldComponentUpdate() -> componentWillUpdate() -> render() -> componentDidUpdate()
   // componentWillUpdate() 이 순간에 로딩중 뱅글뱅글 돌아가겠지. spinner  
   // componentDidUpdate() (업데이트 이후에는) 돌고 있던 '로딩 중' 메세지나 아이콘을 숨기면 됨!! 
-  componentWillMount() {
-    console.log('will mount');
-  }
 
+  state = {
+    greeting: 'Hello!'
+  }
+  
+  // state 를 직접 수정하면 리액트에서 지정된 render의 설정이 작동하지 않는다.
+  // setState 로 업데이트하고, 업데이트할 때마다 render 이 작동할 것이다!! 새로운 state와 함께~~ 
   componentDidMount() {
-    console.log('Did mount');
+    setTimeout(() => {
+      this.setState({
+        greeting: 'Hello again!!!'
+      })
+    }, 2000)
   }
-
 
   render() {
-    console.log('Render');
     return (
       <div className="App">
+        {this.state.greeting}
           {movies.map((movie, index) => {
             return <Movie title={movie.title} poster={movie.poster} key={index} />
           })}
