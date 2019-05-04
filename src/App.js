@@ -23,7 +23,28 @@ const movies = [
 ]
 
 class App extends Component {
+
+  /** render 할 때, (컴포넌트를 띄울 때) 아래와 같은 순서로 한다 */
+  // Render : componentWillMount() -> render -> componentDidMount()
+  
+  /** 컴포넌트가 새로운 props를 받아 들였다. 
+   * -> old props vs new props 비교해서 다르면 update == true 라고 인식 
+   * -> 컴포넌트가 업데이트를 할 것 이다! 단계 
+   */
+  // Update componentWillReceiveProps() -> shouldComponentUpdate() -> componentWillUpdate() -> render() -> componentDidUpdate()
+  // componentWillUpdate() 이 순간에 로딩중 뱅글뱅글 돌아가겠지. spinner  
+  // componentDidUpdate() (업데이트 이후에는) 돌고 있던 '로딩 중' 메세지나 아이콘을 숨기면 됨!! 
+  componentWillMount() {
+    console.log('will mount');
+  }
+
+  componentDidMount() {
+    console.log('Did mount');
+  }
+
+
   render() {
+    console.log('Render');
     return (
       <div className="App">
           {movies.map((movie, index) => {
@@ -32,6 +53,7 @@ class App extends Component {
       </div>
     );
   }
+
 }
 
 export default App;
