@@ -1,6 +1,7 @@
 import React from 'react'; //  {Component} 이건 이제 없어도 되니까 제거!!
 import './Movie.css';
 import PropTypes from 'prop-types';
+import LinesEllipsis from 'react-lines-ellipsis';
 
 // class Movie extends Component{
 
@@ -38,9 +39,15 @@ function Movie({title, poster, genres, synopsis}) {
                 <div className="Movie__Genres">
                     {genres.map((genre, index) => <MovieGenre genre={genre} key={index} />)} 
                 </div>
-                <p className="Movie__Synopsis">
-                    {synopsis}
-                </p>
+                <div className="Movie__Synopsis">
+                    <LinesEllipsis
+                        text={synopsis}
+                        maxLine='3'
+                        ellipsis='...'
+                        trimRight
+                        basedOn='letters'
+                    />   
+                </div>
             </div>
         </div>
     )

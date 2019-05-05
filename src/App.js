@@ -67,7 +67,7 @@ class App extends Component {
   }
 
   _callApi = () => {
-    return fetch('https://yts.am/api/v2/list_movies.json?sort_by=rating')
+    return fetch('https://yts.am/api/v2/list_movies.json?sort_by=download_count')
     .then(potato => potato.json())
     .then(json => json.data.movies) // => arrow function 기능 자체에 return 이라는 뜻이 내재 되어있어서 return을 적을 필요가 없음!
     .catch(err => console.log(err))
@@ -75,9 +75,10 @@ class App extends Component {
 
 
   render() {
+    const { movies } = this.state;
     return (
-      <div className="App">
-          { this.state.movies ? this._renderMovies() : 'Loading' }
+      <div className={movies ? "App" : "App--loading"}>
+          { movies ? this._renderMovies() : 'Loading' }
       </div>
     );
   }
