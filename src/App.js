@@ -20,8 +20,14 @@ class App extends Component {
   
   // state 를 직접 수정하면 리액트에서 지정된 render의 설정이 작동하지 않는다.
   // setState 로 업데이트하고, 업데이트할 때마다 render 이 작동할 것이다!! 새로운 state와 함께~~ 
+  // .then() 앞에 지정된 작업이 (성공/실패 상관없이) 그냥 작업이 완료되면, thenㅇ르 부름 -> catch
   componentDidMount() {
-    console.log(fetch('https://yts.am/api/v2/list_movies.json?sort_by=rating'))
+    fetch('https://yts.am/api/v2/list_movies.json?sort_by=like_count')
+    // .then(potato => console.log(potato))
+    // .then(response => console.log(response)) 변수명? 마음대로 작명 가능 ! 
+    .then(potato => potato.json())
+    .then(json => console.log(json))
+    .catch(err => console.log(err))
   }
 
   // 영화리스트를 불러오는 함수 
