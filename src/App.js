@@ -21,36 +21,7 @@ class App extends Component {
   // state 를 직접 수정하면 리액트에서 지정된 render의 설정이 작동하지 않는다.
   // setState 로 업데이트하고, 업데이트할 때마다 render 이 작동할 것이다!! 새로운 state와 함께~~ 
   componentDidMount() {
-    // setTimeout(function(){
-    //   console.log('hello');
-    // }, 1000)
-
-    setTimeout(() => {
-      this.setState({
-        movies: [
-          {
-            title : "Up",
-            poster : "https://static.rogerebert.com/uploads/review/primary_image/reviews/up-2009/hero_Up-2009.jpg"
-          },
-          {
-            title : "Believer",
-            poster : "https://img1.daumcdn.net/thumb/R720x0/?fname=http://t1.daumcdn.net/liveboard/fanzeel/f04f521eefdc418098eb12434ce96ea7.JPG"
-          },
-          {
-            title : "Star Wars",
-            poster : "https://file.mk.co.kr/meet/neds/2015/12/image_readtop_2015_1193248_14504095132280710.jpg"
-          },
-          {
-            title : "The Avengers",
-            poster : "https://www.enewstoday.co.kr/news/photo/201904/1291309_368979_5341.jpg"
-          },
-          {
-            title : "Notting Hill",
-            poster : "http://db.kookje.co.kr/news2000/photo/2019/0208/L20190208.99099001142i1.jpg"
-          },
-        ]
-      })
-    }, 2000)
+    console.log(fetch('https://yts.am/api/v2/list_movies.json?sort_by=rating'))
   }
 
   // 영화리스트를 불러오는 함수 
