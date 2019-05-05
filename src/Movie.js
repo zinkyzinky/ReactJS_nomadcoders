@@ -1,8 +1,7 @@
 import React from 'react'; //  {Component} 이건 이제 없어도 되니까 제거!!
-import './Movie.css';
 import PropTypes from 'prop-types';
-import LinesEllipsis from 'react-lines-ellipsis';
-
+import LinesEllipsis from 'react-lines-ellipsis'
+import './Movie.css';
 // class Movie extends Component{
 
 //     /** 부모에게 받은 컴포넌트 정보 체크 가능!!
@@ -30,11 +29,11 @@ import LinesEllipsis from 'react-lines-ellipsis';
 function Movie({title, poster, genres, synopsis}) {
     return (
         <div className="Movie">
-            <div className="Movie__Columns">
+            <div className="Movie__Column">
                 {/** this.props.poster 이라고 하면 에러!! 클래스가 아니니까!! */ }
                 <MoviePoster poster={poster} alt={title}/>       
             </div>
-            <div className="Movie__Columns">
+            <div className="Movie__Column">
                 <h1>{title}</h1>
                 <div className="Movie__Genres">
                     {genres.map((genre, index) => <MovieGenre genre={genre} key={index} />)} 
@@ -73,13 +72,13 @@ function Movie({title, poster, genres, synopsis}) {
 // function render 없고, 라이프 사이클 또한 없음. 그저 return 만 있음!
 function MoviePoster({poster, alt}) {
     return (
-        <img src={poster} alt={alt} title={alt} className="Movie_Poster"/>
+        <img src={poster} alt={alt} title={alt} className="Movie__Poster"/>
     )
 }
 
 function MovieGenre({genre}) {
     return (
-        <span className="Movie__Genre">{genre} </span>
+        <span className="Movie__Genre">{genre}</span>
     )
 }
 
